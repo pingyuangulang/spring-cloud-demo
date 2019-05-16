@@ -1,0 +1,17 @@
+server:
+  port: 8100
+
+# 注册中心集群名称必须相同
+spring:
+  application:
+    name: spring-cloud-eureka-server
+
+eureka:
+  instance:
+    hostname: 127.0.0.1
+  client:
+    service-url:
+      # 将当前服务注册进其他两个服务注册中心
+      defaultZone: http://${eureka.instance.hostname}:7100/eureka/, http://${eureka.instance.hostname}:9100/eureka/
+    register-with-eureka: true
+    fetch-registry: true
